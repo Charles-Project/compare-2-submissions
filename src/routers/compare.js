@@ -6,7 +6,7 @@ const router = new express.Router();
 var fs = require('fs');
 
 const stringSimilarity = require('string-similarity');
-const Diff = require('diff');
+// const Diff = require('diff');
 const upload = require("../utils/multer");
 
 router.post("/compare", auth, upload.fields([
@@ -87,7 +87,7 @@ try {
      const compareData = await Compare.find({
         _id: req.params.id
     });
-    console.log("value1");
+
     const {Student1, Student2} = compareData[0];;
     const similarity = stringSimilarity.compareTwoStrings(Student1.txt, Student2.txt);
     const percentage = Math.round(similarity*100);
